@@ -13,6 +13,7 @@
 		92A99E8A227B3BA10006918F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92A99E89227B3BA10006918F /* Assets.xcassets */; };
 		92A99E8D227B3BA10006918F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A99E8B227B3BA10006918F /* LaunchScreen.storyboard */; };
 		92A99E96227B3BB40006918F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A99E95227B3BB40006918F /* CoreLocation.framework */; };
+		92A99E98227C73E90006918F /* LocalTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A99E97227C73E90006918F /* LocalTableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		92A99E8C227B3BA10006918F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92A99E8E227B3BA10006918F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92A99E95227B3BB40006918F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		92A99E97227C73E90006918F /* LocalTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				92A99E82227B3BA00006918F /* AppDelegate.swift */,
+				92A99E97227C73E90006918F /* LocalTableTableViewController.swift */,
 				92A99E84227B3BA00006918F /* ViewController.swift */,
 				92A99E86227B3BA00006918F /* Main.storyboard */,
 				92A99E89227B3BA10006918F /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92A99E98227C73E90006918F /* LocalTableTableViewController.swift in Sources */,
 				92A99E85227B3BA00006918F /* ViewController.swift in Sources */,
 				92A99E83227B3BA00006918F /* AppDelegate.swift in Sources */,
 			);
