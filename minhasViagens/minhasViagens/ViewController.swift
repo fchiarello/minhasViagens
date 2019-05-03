@@ -27,7 +27,24 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.startUpdatingLocation()
     }
     
-    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .authorizedWhenInUse {
+            let alertaController = UIAlertController(title: "Permissão de acesso. Local!", message: "Precisamos de permissão para o funcionamento do app.", preferredStyle: .alert)
+            let acaoConfiguracoes = UIAlertAction(title: "AbrirConfigurações", style: .default, handler: {
+                (alertaConfiguracoes) in
+                if let configuracoes = NSURL (string: UIApplication.openSettingsURLString){
+                 
+                    UIApplication.shared.open(configuracoes as URL)
+                }
+            })
+            
+            let acaoCancelar = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+            
+            alertaController.addAction(acaoConfiguracoes)
+            alertaController.addAction(acaoCancelar)
+            present(alertaController, animated: true, completion: nil)
+        }
+    }
 
 
 }
