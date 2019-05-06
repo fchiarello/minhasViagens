@@ -10,11 +10,16 @@ import UIKit
 
 class LocalTableTableViewController: UITableViewController {
 
-    var localViagem: [String] = ["Cristo Redentor", "Torre Eifel", "Empire State"]
+    var localViagem: [Dictionary <String, String>] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+         localViagem = armazenamentoViagens().listarViagem()
+        tableView.reloadData()
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -29,7 +34,7 @@ class LocalTableTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let viagem = localViagem [indexPath.row]
+        let viagem = localViagem [indexPath.row]["local"]
         
         let celula = tableView.dequeueReusableCell(withIdentifier: "celulaReuso", for: indexPath)
         celula.textLabel?.text = viagem
