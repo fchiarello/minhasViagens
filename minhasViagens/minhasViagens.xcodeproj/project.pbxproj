@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		921C4A302280AA2C00F243DE /* armazenandoViagens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921C4A2F2280AA2C00F243DE /* armazenandoViagens.swift */; };
 		92A99E83227B3BA00006918F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A99E82227B3BA00006918F /* AppDelegate.swift */; };
 		92A99E85227B3BA00006918F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A99E84227B3BA00006918F /* ViewController.swift */; };
 		92A99E88227B3BA00006918F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A99E86227B3BA00006918F /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		921C4A2F2280AA2C00F243DE /* armazenandoViagens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = armazenandoViagens.swift; sourceTree = "<group>"; };
 		92A99E7F227B3BA00006918F /* minhasViagens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minhasViagens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92A99E82227B3BA00006918F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92A99E84227B3BA00006918F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				92A99E82227B3BA00006918F /* AppDelegate.swift */,
 				92A99E97227C73E90006918F /* LocalTableTableViewController.swift */,
 				92A99E84227B3BA00006918F /* ViewController.swift */,
+				921C4A2F2280AA2C00F243DE /* armazenandoViagens.swift */,
 				92A99E86227B3BA00006918F /* Main.storyboard */,
 				92A99E89227B3BA10006918F /* Assets.xcassets */,
 				92A99E8B227B3BA10006918F /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				921C4A302280AA2C00F243DE /* armazenandoViagens.swift in Sources */,
 				92A99E98227C73E90006918F /* LocalTableTableViewController.swift in Sources */,
 				92A99E85227B3BA00006918F /* ViewController.swift in Sources */,
 				92A99E83227B3BA00006918F /* AppDelegate.swift in Sources */,

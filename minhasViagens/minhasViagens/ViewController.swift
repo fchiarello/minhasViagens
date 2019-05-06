@@ -9,10 +9,11 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {  
 
     @IBOutlet weak var mapa: MKMapView!
     var gerenciadorLocalizacao = CLLocationManager ()
+    var viagem: Dictionary <String, String> = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +51,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                             }
                         }
                     }
+                    
+//                    Salvar dados no dispositivo
+                    
+                    self.viagem = ["local": localcompleto, "latitude": String(coordenadas.latitude), "longitude": String(coordenadas.longitude) ]
+                    armazenamentoViagens().salvarViagem(viagem: self.viagem)
+                    
+                    print(armazenamentoViagens().listarViagem())
+                    
              
-                    //            Exibe anotacao com dados de endereco
+//                    Exibe anotacao com dados de endereco
                     
                     let anotacao = MKPointAnnotation()
                     anotacao.coordinate.latitude = coordenadas.latitude
