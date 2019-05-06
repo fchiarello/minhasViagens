@@ -41,8 +41,12 @@ class armazenamentoViagens {
         }
     }
     
-    func removerViagem() {
-      
+    func removerViagem(indice: Int) {
+        viagens = listarViagem()
+        viagens.remove(at: indice)
+        getDefaults().set(viagens, forKey: chaveArmazenamento)
+        getDefaults().synchronize()
+        
     }
     
     

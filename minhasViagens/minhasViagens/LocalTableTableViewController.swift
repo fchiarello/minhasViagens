@@ -17,8 +17,7 @@ class LocalTableTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-         localViagem = armazenamentoViagens().listarViagem()
-        tableView.reloadData()
+        atualizarViagem()
         
     }
 
@@ -40,6 +39,18 @@ class LocalTableTableViewController: UITableViewController {
         celula.textLabel?.text = viagem
         
         return celula
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            armazenamentoViagens().removerViagem(indice: indexPath.row)
+            atualizarViagem()
+        }
+    }
+    
+    func atualizarViagem() {
+        localViagem = armazenamentoViagens().listarViagem()
+        tableView.reloadData()
     }
 
 }
