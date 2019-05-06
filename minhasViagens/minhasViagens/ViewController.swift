@@ -28,7 +28,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @objc func marcar (gesture: UIGestureRecognizer) {
         
         if gesture.state == UIGestureRecognizer.State.began {
-            print("pressionado")
+            
+//            Recupera coordenadas dos pontos
+            let pontoSelecionado = gesture.location(in: self.mapa)
+            let coordenadas = mapa.convert(pontoSelecionado, toCoordinateFrom: self.mapa)
+            
+//            Exibe anotacao com dados de endereco
+            
+            let anotacao = MKPointAnnotation()
+            anotacao.coordinate.latitude = coordenadas.latitude
+            anotacao.coordinate.longitude = coordenadas.longitude
+            anotacao.title = "Pressionei Aqui"
+            anotacao.subtitle = "Estou Aqui"
+            
+            mapa.addAnnotation(anotacao)
+            
+            
         }
         
         
