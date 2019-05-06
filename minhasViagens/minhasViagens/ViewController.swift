@@ -32,18 +32,38 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 //            Recupera coordenadas dos pontos
             let pontoSelecionado = gesture.location(in: self.mapa)
             let coordenadas = mapa.convert(pontoSelecionado, toCoordinateFrom: self.mapa)
+            let localizacao = CLLocation(latitude: coordenadas.latitude, longitude: coordenadas.longitude)
             
-//            Exibe anotacao com dados de endereco
+//            recupera endereco do ponto selecionado
             
-            let anotacao = MKPointAnnotation()
-            anotacao.coordinate.latitude = coordenadas.latitude
-            anotacao.coordinate.longitude = coordenadas.longitude
-            anotacao.title = "Pressionei Aqui"
-            anotacao.subtitle = "Estou Aqui"
-            
-            mapa.addAnnotation(anotacao)
+            var localcompleto = "Endereço não encontrado!"
             
             
+            CLGeocoder().reverseGeocodeLocation(localizacao) { (local, erro) in
+                if erro == nil {
+                    if let dadosLocal = local?.first{
+                        if let nome = dadosLocal.name{
+                            localcompleto = nome
+                        }else{
+                            if let endereco = dadosLocal.thoroughfare{
+                                localcompleto = endereco
+                            }
+                        }
+                    }
+             
+                    //            Exibe anotacao com dados de endereco
+                    
+                    let anotacao = MKPointAnnotation()
+                    anotacao.coordinate.latitude = coordenadas.latitude
+                    anotacao.coordinate.longitude = coordenadas.longitude
+                    anotacao.title = localcompleto
+                    
+                    self.mapa.addAnnotation(anotacao)
+                    
+                }else{
+                    print("Erro")
+                }
+            }
         }
         
         
