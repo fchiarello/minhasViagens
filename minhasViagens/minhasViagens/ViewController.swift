@@ -16,8 +16,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         configuraGerenciadorLocalizacao()
+        
+        let reconhecedorGesto = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.marcar( gesture:) ))
+        reconhecedorGesto.minimumPressDuration = 2
+        
+        mapa.addGestureRecognizer(reconhecedorGesto)
+    }
+    
+    @objc func marcar (gesture: UIGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizer.State.began {
+            print("pressionado")
+        }
+        
+        
     }
     
     func configuraGerenciadorLocalizacao() {
