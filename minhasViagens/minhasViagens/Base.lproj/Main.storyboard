@@ -37,7 +37,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aqJ-9R-b8D">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="Xxk-mz-cmZ" kind="show" id="q58-1C-Lmi"/>
+                                <segue destination="Xxk-mz-cmZ" kind="show" identifier="identificadorMapa" id="q58-1C-Lmi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

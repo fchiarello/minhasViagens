@@ -11,12 +11,16 @@ import UIKit
 class LocalTableTableViewController: UITableViewController {
 
     var localViagem: [Dictionary <String, String>] = []
+    var controleNavegacao = "adicionar"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        controleNavegacao = "adicionar"
         atualizarViagem()
         
     }
@@ -29,6 +33,8 @@ class LocalTableTableViewController: UITableViewController {
        
         return localViagem.count
     }
+    
+    
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,6 +45,30 @@ class LocalTableTableViewController: UITableViewController {
         celula.textLabel?.text = viagem
         
         return celula
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        self.controleNavegacao = "listar"
+        
+        performSegue(withIdentifier: "identificadorMapa", sender: indexPath.row)
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "identificadorMapa" {
+            let viewControllerDestino = segue.destination as! ViewController
+            if self.controleNavegacao == "listar"{
+                if let indiceRecuperado = sender {
+                    let indice = indiceRecuperado as! Int
+                    viewControllerDestino.viagem = localViagem [indice]
+                    viewControllerDestino.indiceSelecionado = indice
+                }else{
+                    viewControllerDestino.viagem = [:]
+                    viewControllerDestino.indiceSelecionado = -1
+                }
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

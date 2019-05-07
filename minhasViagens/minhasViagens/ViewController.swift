@@ -14,16 +14,54 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapa: MKMapView!
     var gerenciadorLocalizacao = CLLocationManager ()
     var viagem: Dictionary <String, String> = [:]
+    var indiceSelecionado: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configuraGerenciadorLocalizacao()
+        if let indice = indiceSelecionado{
+            if indice == -1 {//adicionar
+                 configuraGerenciadorLocalizacao()
+            }else{//listar
+                exibirAnotacao(viagem: viagem)
+            }
+        }
         
+//        reconhecedor de gesto
         let reconhecedorGesto = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.marcar( gesture:) ))
         reconhecedorGesto.minimumPressDuration = 2
         
         mapa.addGestureRecognizer(reconhecedorGesto)
+    }
+
+    func exibirAnotacao (viagem: Dictionary <String, String>) {
+        if let localViagem = viagem ["local"]{
+            if let latitude = viagem ["latitude"]{
+                if let longitude = viagem ["longitude"]{
+                    if let latitude = Double(latitude){
+                        if let longitude = Double(longitude){
+                            
+//                            Exibe anotacao
+                            let anotacao = MKPointAnnotation()
+                            anotacao.coordinate.latitude = latitude
+                            anotacao.coordinate.longitude = longitude
+                            anotacao.title = localViagem
+                            
+                            self.mapa.addAnnotation(anotacao)
+                            
+//                            Exibe Localizacao
+                            
+                            let localizacao = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+                            let spam = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                            
+                            let regiao: MKCoordinateRegion = MKCoordinateRegion.init(center: localizacao, span: spam)
+                            self.mapa.setRegion(regiao, animated: true)
+
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @objc func marcar (gesture: UIGestureRecognizer) {
