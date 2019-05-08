@@ -47,6 +47,13 @@ class LocalTableTableViewController: UITableViewController {
         return celula
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            armazenamentoViagens().removerViagem(indice: indexPath.row)
+            atualizarViagem()
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         self.controleNavegacao = "listar"
@@ -71,12 +78,7 @@ class LocalTableTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
-            armazenamentoViagens().removerViagem(indice: indexPath.row)
-            atualizarViagem()
-        }
-    }
+
     
     func atualizarViagem() {
         localViagem = armazenamentoViagens().listarViagem()

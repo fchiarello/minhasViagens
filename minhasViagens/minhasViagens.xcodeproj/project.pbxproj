@@ -13,7 +13,6 @@
 		92A99E88227B3BA00006918F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A99E86227B3BA00006918F /* Main.storyboard */; };
 		92A99E8A227B3BA10006918F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92A99E89227B3BA10006918F /* Assets.xcassets */; };
 		92A99E8D227B3BA10006918F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A99E8B227B3BA10006918F /* LaunchScreen.storyboard */; };
-		92A99E96227B3BB40006918F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A99E95227B3BB40006918F /* CoreLocation.framework */; };
 		92A99E98227C73E90006918F /* LocalTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A99E97227C73E90006918F /* LocalTableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +34,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92A99E96227B3BB40006918F /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

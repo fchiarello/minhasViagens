@@ -33,7 +33,32 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         mapa.addGestureRecognizer(reconhecedorGesto)
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let local = locations.last!
+        
+        //exibe local
+        let localizacao = CLLocationCoordinate2DMake(local.coordinate.latitude , local.coordinate.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        
+        let regiao: MKCoordinateRegion = MKCoordinateRegion(center: localizacao, span: span)
+        self.mapa.setRegion(regiao, animated: true)
+        
+    }
+    
+    func exibirLocal( latitude: Double, longitude: Double){
+        //                            Exibe Localizacao
+        
+        let localizacao = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        
+        let regiao: MKCoordinateRegion = MKCoordinateRegion.init(center: localizacao, span: span)
+        self.mapa.setRegion(regiao, animated: true)
 
+        
+    }
+    
     func exibirAnotacao (viagem: Dictionary <String, String>) {
         if let localViagem = viagem ["local"]{
             if let latitude = viagem ["latitude"]{
@@ -49,14 +74,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                             
                             self.mapa.addAnnotation(anotacao)
                             
-//                            Exibe Localizacao
-                            
-                            let localizacao = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
-                            let spam = MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                            
-                            let regiao: MKCoordinateRegion = MKCoordinateRegion.init(center: localizacao, span: spam)
-                            self.mapa.setRegion(regiao, animated: true)
-
+                            exibirLocal(latitude: latitude, longitude: longitude)
                         }
                     }
                 }
@@ -97,15 +115,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     
 //                    Exibe anotacao com dados de endereco
                     
-                    let anotacao = MKPointAnnotation()
-                    anotacao.coordinate.latitude = coordenadas.latitude
-                    anotacao.coordinate.longitude = coordenadas.longitude
-                    anotacao.title = localcompleto
-                    
-                    self.mapa.addAnnotation(anotacao)
+                    self.exibirAnotacao(viagem: self.viagem)
                     
                 }else{
-                    print("Erro")
+                    print(erro!)
                 }
             }
         }
@@ -121,7 +134,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status != .authorizedWhenInUse {
+        if status != .authorizedWhenInUse && status != .notDetermined {
             let alertaController = UIAlertController(title: "Permissão de acesso. Local!", message: "Precisamos de permissão para o funcionamento do app.", preferredStyle: .alert)
             let acaoConfiguracoes = UIAlertAction(title: "AbrirConfigurações", style: .default, handler: {
                 (alertaConfiguracoes) in
